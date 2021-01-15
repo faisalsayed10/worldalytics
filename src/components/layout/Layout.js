@@ -40,8 +40,9 @@ const Layout = ({ children, title = "Worldalytics" }) => {
       <main className={styles.main}>{children}</main>
 
       <footer className={styles.footer}>
-        Faisal Sayed. Made with ❤️ and{" "}
+        Faisal Sayed. Made with 🖤 and{" "}
         <svg
+          className={styles.githubsvg}
           width="24"
           height="24"
           fill="currentColor"
