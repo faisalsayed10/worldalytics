@@ -1,19 +1,14 @@
-import Head from "next/head";
 import { useState } from "react";
 import CountryTable from "../components/CountryTable";
 import Layout from "../components/Layout";
 import SearchInput from "../components/SearchInput";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Pages.module.css";
+import { searchCountries } from "../util/utils";
 
 export default function Home({ countries }) {
   const [keyword, setKeyword] = useState();
 
-  const filteredCountries = keyword ? countries.filter(
-    (country) =>
-      country.name.toLowerCase().includes(keyword) ||
-      country.region.toLowerCase().includes(keyword) ||
-      country.subregion.toLowerCase().includes(keyword)
-  ) : countries;
+  const filteredCountries = keyword ? searchCountries(countries, keyword) : countries;
 
   const onInputChange = e => {
     e.preventDefault();

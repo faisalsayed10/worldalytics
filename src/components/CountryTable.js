@@ -3,17 +3,7 @@ import { useState } from "react";
 import styles from "../styles/Components.module.css";
 import Link from "next/link";
 import SortArrow from "./SortArrow";
-
-const orderBy = (countries, value, direction) => {
-  if (direction === "asc") {
-    return [...countries].sort((a, b) => (a[value] > b[value] ? 1 : -1));
-  }
-  if (direction === "desc") {
-    return [...countries].sort((a, b) => (a[value] > b[value] ? -1 : 1));
-  }
-
-  return countries;
-};
+import { orderBy } from "../util/utils"
 
 const CountryTable = ({ countries }) => {
   const [direction, setDirection] = useState();

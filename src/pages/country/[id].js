@@ -1,26 +1,13 @@
 import { useEffect, useState } from "react";
 import Layout from "../../components/Layout";
-import styles from "./country.module.css";
-
-const getCountry = async (id) => {
-  const res = await fetch(`https://restcountries.eu/rest/v2/alpha/${id}`);
-  const country = res.json();
-  return country;
-};
+import styles from "../../styles/Pages.module.css";
+import { getSpecificCountry, getCountryBorders } from "../../util/utils";
 
 const Country = ({ country }) => {
   const [borders, setBorders] = useState([]);
 
-  const getBorders = async () => {
-    const borders = await Promise.all(
-      country.borders.map((border) => getCountry(border))
-    );
-
-    setBorders(borders);
-  };
-
   useEffect(() => {
-    getBorders();
+    getCountryBorders(country, setBorders);
   }, []);
 
 return (
@@ -119,7 +106,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const country = await getCountry(params.id);
+  const country = await getSpecificCountry(params.id);
   return {
     props: {
       country,
