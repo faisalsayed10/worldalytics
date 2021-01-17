@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { useState } from "react";
-import CountryTable from "../components/countryTable/CountryTable";
-import Layout from "../components/layout/Layout";
-import SearchInput from "../components/searchInput/SearchInput";
+import CountryTable from "../components/CountryTable";
+import Layout from "../components/Layout";
+import SearchInput from "../components/SearchInput";
 import styles from "../styles/Home.module.css";
 
 export default function Home({ countries }) {

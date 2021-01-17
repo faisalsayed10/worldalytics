@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Link from "next/link";
 import Head from "next/head";
-import styles from "./Layout.module.css"
+import styles from "../styles/Components.module.css";
 import { Brightness4Rounded } from "@material-ui/icons";
 
 const Layout = ({ children, title = "Worldalytics" }) => {
