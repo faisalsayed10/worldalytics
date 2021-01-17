@@ -1,16 +1,43 @@
+import { useState, useEffect } from 'react'
 import Link from "next/link";
 import Head from "next/head";
 import styles from "./Layout.module.css"
+import { Brightness4Rounded } from "@material-ui/icons";
 
 const Layout = ({ children, title = "Worldalytics" }) => {
+  const [theme, setTheme] = useState("light");
+
+    useEffect(() => {
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme")
+      );
+
+      setTheme(localStorage.getItem("theme"));
+    }, []);
+
+    const switchTheme = () => {
+      if (theme === "light") {
+        saveTheme("dark");
+      } else {
+        saveTheme("light");
+      }
+    };
+
+    const saveTheme = (theme) => {
+      setTheme(theme);
+      localStorage.setItem("theme", theme);
+      document.documentElement.setAttribute("data-theme", theme);
+    };
+  
   return (
     <div className={styles.container}>
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Link href={`/`}>
         <header className={styles.header}>
+      <Link href={`/`}>
           <svg
             width="175"
             height="24"
@@ -36,8 +63,12 @@ const Layout = ({ children, title = "Worldalytics" }) => {
             />
             <rect y="4" width="7.33333" height="4.4" rx="2" fill="#21B6B7" />
           </svg>
-        </header>
       </Link>
+      <button className={styles.themeSwitcher} onClick={switchTheme}>
+        <Brightness4Rounded />
+      </button>
+        </header>
+
 
       <main className={styles.main}>{children}</main>
 
