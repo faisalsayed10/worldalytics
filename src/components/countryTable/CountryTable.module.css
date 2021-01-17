@@ -1,5 +1,6 @@
 .heading {
   display: flex;
+  padding: 20px;
 }
 
 .heading button {
@@ -10,9 +11,8 @@
 }
 
 .heading_name,
-.heading_population {
-  flex: 1;
-  padding: 20px;
+.heading_population, .heading_area {
+  flex: 3;
   color: var(--text-color-secondary);
   font-weight: 500;
 
@@ -43,12 +43,33 @@
 }
 
 .name {
-  flex: 1;
+  flex: 3;
   text-align: left;
 }
 
 .population {
+  flex: 3;
+}
+
+.area {
+  flex: 3;
+}
+
+.flag {
   flex: 1;
+  margin-right: 8px;
+}
+
+.flag img {
+  border-radius: 2px;
+  width: 100%;
+  max-width: 85px;
+  max-height: 40px;
+}
+
+.heading_flag {
+  flex: 1;
+  margin-right: 16px;
 }
 
 .heading_arrow {
@@ -57,4 +78,16 @@
   justify-content: center;
   align-items: center;
   margin-left: 2px;
+}
+
+@media screen and (max-width: 720px) {
+  .area,
+  .heading_area {
+    display: none;
+  }
+
+  .flag,
+  .heading_flag {
+    display: none;
+  }
 }
